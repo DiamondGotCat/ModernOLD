@@ -6,13 +6,16 @@ class ModernLogging:
 
     def log(self, message, level="INFO"):
         if level == "INFO":
-            print(f"{self.process_name} - {self._color(34)}INFO{self._color(0)} - {message}")
+            print(self._make(message, level="INFO", color=34))
         elif level == "WARNING":
-            print(f"{self.process_name} - {self._color(33)}WARNING{self._color(0)} - {message}")
+            print(self._make(message, level="WARNING", color=33))
         elif level == "ERROR":
-            print(f"{self.process_name} - {self._color(31)}ERROR{self._color(0)} - {message}")
+            print(self._make(message, level="ERROR", color=31))
         else:
-            print(f"{self.process_name} - {self._color(35)}DEBUG{self._color(0)} - {message}")
+            print(self._make(message, level=level, color=35))
+
+    def _make(self, message, level="INFO", color=34):
+        return f"{self.process_name} - {self._color(color)}{level}{self._color(0)} - {message}"
 
     def _color(self, color_code):
         return f"\033[{color_code}m"

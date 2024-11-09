@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='kamu-jp-modern',  # パッケージ名
-    version='0.5.0',  # バージョン
+    version='0.8.6',  # バージョン
     packages=find_packages(),
     description='Modern is a simple package for logging and progress bar and More!',
     long_description=open('README.md').read(),
