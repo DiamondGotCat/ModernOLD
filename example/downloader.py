@@ -61,9 +61,8 @@ def download_file(url, output_path):
 
                 on_unit_downloaded(downloaded, progress_bar, total_downloaded, start_time)
 
-                while downloaded >= unit_multiplier:
-                    progress_bar.update(1)
-                    downloaded -= unit_multiplier
+                progress_bar.update(downloaded / unit_multiplier)
+                downloaded = 0
 
         # 残りのダウンロード分を処理（単位未満）
         if downloaded > 0:
@@ -74,7 +73,7 @@ def on_unit_downloaded(bytes_downloaded, progress_bar, total_downloaded, start_t
     elapsed_time = time.time() - start_time
     total_downloaded_mb = total_downloaded / ONE_MB
     elapsed_time_formatted = time.strftime("%H hours %M minutes %S seconds", time.gmtime(elapsed_time))
-    log_message = f"{total_downloaded_mb:.2f} MB downloaded in {elapsed_time_formatted} seconds"
+    log_message = f"{total_downloaded_mb:.2f} MB downloaded in {elapsed_time_formatted}"
     progress_bar.logging(log_message)
 
 def main():
@@ -83,7 +82,10 @@ def main():
     parser.add_argument('output', help='Path to save the downloaded file')
     args = parser.parse_args()
     
+    logger = KamuJpModern().modernLogging(process_name="Downloader")
+    logger.log(f"Downloading started!")
     download_file(args.url, args.output)
+    logger.log(f"Download finished!")
 
 if __name__ == '__main__':
     main()
