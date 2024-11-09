@@ -26,4 +26,10 @@ logger.log("This is a test message", "INFO")
 ```python
 progress_bar = KamuJpModern().modernProgressBar(total=100, process_name="Task 1", process_color=32)
 progress_bar.start()
+
+for i in range(100):
+  time.sleep(0.05)
+  progress_bar.update()
+
+progress_bar.finish()
 ```
