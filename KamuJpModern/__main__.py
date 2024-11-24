@@ -15,6 +15,7 @@ if __name__ == "__main__":
     progress_bar1.start()
     progress_bar2.start()
 
+    progress_bar1.notbusy()
     for i in range(100):
         time.sleep(0.05)
         progress_bar1.update()
