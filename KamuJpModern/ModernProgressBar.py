@@ -18,6 +18,7 @@ class ModernProgressBar:
         self.log_lines = 0
         self.step = 0
         self.busy_step = 0
+        self.message = "No Message"
         self._initial_render()
 
     def _initial_render(self):
@@ -28,6 +29,9 @@ class ModernProgressBar:
 
     def notbusy(self):
         self.isbusy = False
+
+    def setMessage(self, message):
+        self.message = message
 
     def start(self):
         self._render()
@@ -78,7 +82,7 @@ class ModernProgressBar:
         bar = self._progress_bar(progress)
         percentage = f"{progress:.2%}"
         status = "[DONE]" if final else f"[{self.current}/{self.total}]"
-        line = f"{self.process_name} - ({self._color(self.process_color)}{bar}{self._color("reset")}) {percentage} {status}"
+        line = f"{self.process_name} - ({self._color(self.process_color)}{bar}{self._color("reset")}) {percentage} {status} | {self.message}"
         
         # ログ行数を考慮してプログレスバーの位置を調整
         total_move_up = self.log_lines + (len(ModernProgressBar._active_bars) - self.index)
