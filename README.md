@@ -25,7 +25,13 @@ logger.log("This is a test message", "INFO")
 
 ```python
 progress_bar = KamuJpModern().modernProgressBar(total=100, process_name="Task 1", process_color=32)
-progress_bar.start()
+progress_bar.start() # Start in Spinner Mode
+
+for i in range(10):
+  time.sleep(0.05)
+  progress_bar.update()
+
+progress_bar.notbusy() # Spinner Mode Off
 
 for i in range(100):
   time.sleep(0.05)
