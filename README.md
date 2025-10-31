@@ -1,3 +1,5 @@
+**New Version is Available:** [DiamondGotCat/nercone-modern](https://github.com/DiamondGotCat/nercone-modern)
+
 <img width="499" alt="Screenshot" src="https://github.com/user-attachments/assets/b8cf83ed-23f5-4dd5-8e68-a84842b62fad">
 
 Modern is a simple package for logging and progress bar and More!
